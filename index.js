@@ -18,6 +18,12 @@ app.get("/", (req, res) => {
 const userRoutes = require("./routes/userRoutes");
 app.use("/user", userRoutes);
 
+const categoryRoutes = require("./routes/categoryRoutes");
+app.use("/category", categoryRoutes);
+
+const itemRoutes = require("./routes/itemRoutes");
+app.use("/item", itemRoutes);
+
 mongoose
   .connect(
     `mongodb+srv://${DBUSER}:${DBPASS}@apimpass.ubauc7z.mongodb.net/?retryWrites=true&w=majority`

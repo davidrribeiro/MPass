@@ -17,13 +17,13 @@ app.get("/", (req, res) => {
 
 // rotas da api
 const userRoutes = require("./routes/userRoutes");
-app.use("/user", userRoutes);
+app.use("/users", userRoutes);
 
 const categoryRoutes = require("./routes/categoryRoutes");
-app.use("/category", categoryRoutes);
+app.use("/categories", categoryRoutes);
 
 const itemRoutes = require("./routes/itemRoutes");
-app.use("/item", itemRoutes);
+app.use("/items", itemRoutes);
 
 mongoose
   .connect(

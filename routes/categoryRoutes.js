@@ -15,6 +15,19 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const categories = await Category.find();
+
+    if (!categories) {
+      return res.status(404).json({ message: "Categoria não encontrada!" });
+    }
+    res.status(200).json(categories);
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
 

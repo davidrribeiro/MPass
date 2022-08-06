@@ -3,8 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-const DBUSER = process.env.DB_USER;
-const DBPASS = process.env.DB_PASS;
+const dbuser = process.env.DB_USER;
+const dbpassword = process.env.DB_PASS;
+const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,7 +27,7 @@ app.use("/item", itemRoutes);
 
 mongoose
   .connect(
-    `mongodb+srv://${DBUSER}:${DBPASS}@apimpass.ubauc7z.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${dbuser}:${dbpassword}@apimpass.ubauc7z.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log("Conectado ao MongoDB Atlas!");
@@ -35,4 +36,4 @@ mongoose
     console.log("Erro", err);
   });
 
-app.listen(3000);
+app.listen(port);
